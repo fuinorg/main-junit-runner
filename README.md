@@ -10,7 +10,10 @@ Runs JUnit tests in a simple main() method and writes the results as JSON to dis
 Assuming that you have a Java 8 runtime below the current directory in a folder named "jre" and all dependencies (jar files) in a folder named "lib", you can start the app using the following command:
   
 ```
-jre\bin\java -classpath *;lib/* java.org.fuin.mjunitrun.JUnitApp -name MyTest -class org.fuin.mjunitrun.TestDummy -dir /var/tmp
+jre\bin\java -classpath *;lib/* java.org.fuin.mjunitrun.JUnitApp \
+        -name MyTest \
+        -class org.fuin.mjunitrun.TestDummy \
+        -dir /var/tmp
 ```
 
 The following command line arguments can be used: 
