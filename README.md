@@ -36,9 +36,9 @@ In case of a failure the JSON file will look like this:
 			"description": "testTrue(org.fuin.mjunitrun.TestDummy)",
 			"message": "expected:<[fals]e> but was:<[tru]e>",
 			"trace": "org.junit.ComparisonFailure: expected:<[fals]e> but was:<[tru]e>\n
-			... Stack Trace..."
+			... STACK-TRACE..."
 		}
 	]
 }
-```json
+```
 
