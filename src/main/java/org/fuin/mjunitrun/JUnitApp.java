@@ -84,7 +84,7 @@ public final class JUnitApp {
             try {
                 FileUtils.copyFile(logbackConfigSource, logbackConfigTarget);
             } catch (final IOException ex) {
-                throw new RuntimeException("Failed to copy logback config from " + logbackConfigSource + " to " + logbackConfigTarget);
+                throw new RuntimeException("Failed to copy logback config from " + logbackConfigSource + " to " + logbackConfigTarget, ex);
             }
             System.out.println("LOG CONFIG CREATED: " + logbackConfigTarget);
         }
