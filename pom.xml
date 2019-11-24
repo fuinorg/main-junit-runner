@@ -12,7 +12,7 @@
 
     <artifactId>main-junits-runner</artifactId>
     <packaging>jar</packaging>
-    <version>0.2.0-SNAPSHOT</version>
+    <version>0.2.0</version>
     <description>Runs JUnit tests in a simple main() method and writes the results as JSON to disk</description>
     <url>https://github.com/fuinorg/main-junit-runner/</url>
 
