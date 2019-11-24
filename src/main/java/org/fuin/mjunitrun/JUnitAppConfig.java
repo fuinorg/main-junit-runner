@@ -55,8 +55,6 @@ public final class JUnitAppConfig {
      *            Test class to execute.
      * @param dir
      *            Directory for results.
-     * @param logbackXmlSrc
-     *            Logback XML configuration file to copy if it does not exist in the target directory.
      */
     public JUnitAppConfig(final String testName, final Class<?> testClass, final File dir) {
         this(testName, testClass, dir, null);
