@@ -23,6 +23,7 @@ The following command line arguments can be used:
 | **-name** | mandatory | Unique test name | *MyTest* |
 | **-class** | mandatory | Fully qualified name of the junit test class | *org.fuin.mjunitrun.TestDummy*
 | **-dir** | mandatory | Directory to write the result to | */var/tmp* |
+| **-logbackXmlSrc** | optional | Logback XML configuration file to copy, if it does not exist in the target directory (default is 'logback.xml' in current directory)) | */var/tmp/logback.xml* |
  
 As a result, the following JSON file will be written to "/var/tmp/MyTest.json" in case of successful execution:
 

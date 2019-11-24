@@ -35,13 +35,33 @@ public final class JUnitAppConfig {
     @Option(name = "-dir", usage = "Sets the directory to write the result to", metaVar = "RESULT_DIR", required = true)
     private File dir;
 
+    @Option(name = "-logbackXmlSrc", usage = "Logback XML configuration file to copy if it does not exist in the target directory (default is 'logback.xml' in current directory))", metaVar = "LOGBACK_XML_SRC", required = false)
+    private File logbackXmlSrc;
+
     /**
      * Default constructor.
      */
     public JUnitAppConfig() {
         super();
+        logbackXmlSrc = new File("logback.xml");
     }
-
+    
+    /**
+     * Constructor without logback config XML file.
+     * 
+     * @param testName
+     *            Unique name of the test.
+     * @param testClass
+     *            Test class to execute.
+     * @param dir
+     *            Directory for results.
+     * @param logbackXmlSrc
+     *            Logback XML configuration file to copy if it does not exist in the target directory.
+     */
+    public JUnitAppConfig(final String testName, final Class<?> testClass, final File dir) {
+        this(testName, testClass, dir, null);
+    }
+    
     /**
      * Constructor with all data.
      * 
@@ -51,12 +71,19 @@ public final class JUnitAppConfig {
      *            Test class to execute.
      * @param dir
      *            Directory for results.
+     * @param logbackXmlSrc
+     *            Logback XML configuration file to copy if it does not exist in the target directory.
      */
-    public JUnitAppConfig(String testName, Class<?> testClass, File dir) {
+    public JUnitAppConfig(final String testName, final Class<?> testClass, final File dir, final File logbackXmlSrc) {
         super();
         this.testName = testName;
         this.testClass = testClass.getName();
         this.dir = dir;
+        if (logbackXmlSrc == null) {
+            this.logbackXmlSrc = new File("logback.xml");
+        } else {
+            this.logbackXmlSrc = logbackXmlSrc;
+        }
     }
 
     /**
@@ -118,6 +145,25 @@ public final class JUnitAppConfig {
      */
     public final void setDir(final File dir) {
         this.dir = dir;
+    }
+
+    /**
+     * Returns the Logback XML configuration file to copy if it does not exist in the target directory.
+     * 
+     * @return Location of config file.
+     */
+    public final File getLogbackXmlSrc() {
+        return logbackXmlSrc;
+    }
+
+    /**
+     * Sets the Logback XML configuration file to copy if it does not exist in the target directory.
+     * 
+     * @param logbackXmlSrc
+     *            Location of config file to set.
+     */
+    public final void setLogbackXmlSrc(final File logbackXmlSrc) {
+        this.logbackXmlSrc = logbackXmlSrc;
     }
 
 }

@@ -72,19 +72,18 @@ public final class JUnitApp {
 
     }
 
-    private static void initLogging(final String name, final File resultDir) {
+    private static void initLogging(final String name, final File logbackXmlSrc, final File resultDir) {
         final File logFile = new File(resultDir, name + ".log");
         System.setProperty("log_file_path_and_name", logFile.getPath());
-        final File logbackConfigSource = new File("logback.xml");
         final File logbackConfigTarget = new File(resultDir, "logback.xml");
         System.out.println("LOG FILE: " + logFile);
         if (logbackConfigTarget.exists()) {
             System.out.println("LOG CONFIG ALREADY EXISTS: " + logbackConfigTarget);
         } else {
             try {
-                FileUtils.copyFile(logbackConfigSource, logbackConfigTarget);
+                FileUtils.copyFile(logbackXmlSrc, logbackConfigTarget);
             } catch (final IOException ex) {
-                throw new RuntimeException("Failed to copy logback config from " + logbackConfigSource + " to " + logbackConfigTarget, ex);
+                throw new RuntimeException("Failed to copy logback config from " + logbackXmlSrc + " to " + logbackConfigTarget, ex);
             }
             System.out.println("LOG CONFIG CREATED: " + logbackConfigTarget);
         }
@@ -159,7 +158,7 @@ public final class JUnitApp {
         try {
             parser.parseArgument(args);
             
-            initLogging(config.getTestName(), config.getDir());
+            initLogging(config.getTestName(), config.getLogbackXmlSrc(),  config.getDir());
 
             System.exit(new JUnitApp().execute(config));
 
