@@ -72,8 +72,8 @@ public final class JUnitApp {
 
     }
 
-    private static void initLogging(final File resultDir) {
-        final File logFile = new File(resultDir, "junit-app.log");
+    private static void initLogging(final String name, final File resultDir) {
+        final File logFile = new File(resultDir, name + ".log");
         System.setProperty("log_file_path_and_name", logFile.getPath());
         final File logbackConfigSource = new File("logback.xml");
         final File logbackConfigTarget = new File(resultDir, "logback.xml");
@@ -159,7 +159,7 @@ public final class JUnitApp {
         try {
             parser.parseArgument(args);
             
-            initLogging(config.getDir());
+            initLogging(config.getTestName(), config.getDir());
 
             System.exit(new JUnitApp().execute(config));
 
