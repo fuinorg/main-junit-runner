@@ -2,7 +2,7 @@
 Runs JUnit tests in a simple main() method and writes the results as JSON to disk.
 
 [![Build Status](https://jenkins.fuin.org/job/main-junit-runner/badge/icon)](https://jenkins.fuin.org/job/main-junit-runner/)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.fuin/main-junits-runner/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.fuin/main-junit-runner/)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.fuin/main-junits-runner/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.fuin/main-junits-runner/)
 [![LGPLv3 License](http://img.shields.io/badge/license-LGPLv3-blue.svg)](https://www.gnu.org/licenses/lgpl.html)
 [![Java Development Kit 1.8](https://img.shields.io/badge/JDK-1.8-green.svg)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
