@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.fuin</groupId>
         <artifactId>pom</artifactId>
-        <version>1.6.0</version>
+        <version>1.7.1</version>
     </parent>
 
     <artifactId>main-junits-runner</artifactId>
@@ -40,14 +40,14 @@
 
         <dependency>
             <groupId>org.glassfish</groupId>
-            <artifactId>javax.json</artifactId>
-            <version>1.0.4</version>
+            <artifactId>jakarta.json</artifactId>
+            <version>1.1.6</version>
         </dependency>
 
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.7</version>
+            <version>2.11.0</version>
         </dependency>
 
         <dependency>
@@ -59,7 +59,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <version>4.13.2</version>
         </dependency>
 
         <dependency>
@@ -73,14 +73,14 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.11.1</version>
+            <version>3.22.0</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.fuin</groupId>
             <artifactId>utils4j</artifactId>
-            <version>0.10.0</version>
+            <version>0.11.1</version>
             <scope>test</scope>
         </dependency>
 
@@ -93,35 +93,95 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <archive>
+                        <manifestEntries>
+                            <Automatic-Module-Name>org.fuin.mjunitrun</Automatic-Module-Name>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                        <configuration>
-                            <gpgArguments>
-                                <arg>--pinentry-mode</arg>
-                                <arg>loopback</arg>
-                            </gpgArguments>
-                        </configuration>
-                    </execution>
-                </executions>
+                <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jdeps-plugin</artifactId>
+            </plugin>
+
+			<plugin>
+				<groupId>com.internetitem</groupId>
+				<artifactId>write-properties-file-maven-plugin</artifactId>
+				<version>1.0.1</version>
+				<inherited>false</inherited>
+				<executions>
+					<execution>
+						<id>one</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>write-properties-file</goal>
+						</goals>
+						<configuration>
+							<filename>project.properties</filename>
+							<properties>
+								<property>
+									<name>maven_version</name>
+									<value>${project.version}</value>
+								</property>
+							</properties>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
         </plugins>
+
+		<pluginManagement>
+		
+		    <plugins>
+		    
+		        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+		        <plugin>
+		            <groupId>org.eclipse.m2e</groupId>
+		            <artifactId>lifecycle-mapping</artifactId>
+		            <version>1.0.0</version>
+		            <configuration>
+		                <lifecycleMappingMetadata>
+		                    <pluginExecutions>
+		                        <pluginExecution>
+		                            <pluginExecutionFilter>
+		                                <groupId>com.internetitem</groupId>
+		                                <artifactId>write-properties-file-maven-plugin</artifactId>
+		                                <versionRange>[1.0.1,)</versionRange>
+		                                <goals>
+		                                    <goal>write-properties-file</goal>
+		                                </goals>
+		                            </pluginExecutionFilter>
+		                            <action>
+		                                <ignore />
+		                            </action>
+		                        </pluginExecution>
+		                    </pluginExecutions>
+		                </lifecycleMappingMetadata>
+		            </configuration>
+		        </plugin>
+		        
+		    </plugins>
+		    
+		</pluginManagement>
 
     </build>
 
