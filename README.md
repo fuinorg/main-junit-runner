@@ -7,8 +7,8 @@ Runs JUnit tests in a simple main() method and writes the results as JSON to dis
 [![Java Development Kit 11](https://img.shields.io/badge/JDK-11-green.svg)](https://openjdk.java.net/projects/jdk/11/)
 
 ## Versions
-- 0.3.x (or later) = **Java 11**
-- 0.2.0 = **Java 8**
+- 0.3.x (or later) = **Java 11** (Junit4)
+- 0.2.0 = **Java 8** (Junit4)
 
 ## Usage
 Assuming that you have a Java 8 runtime below the current directory in a folder named "jre" and all dependencies (jar files) in a folder named "lib", you can start the app using the following command:
